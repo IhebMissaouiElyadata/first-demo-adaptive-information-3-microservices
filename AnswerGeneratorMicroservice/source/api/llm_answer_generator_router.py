@@ -29,4 +29,4 @@ async def get_context_answer_from_llm(context_OCR_OUTPUT_FOR_NOW: InputDataSchem
         return answer
     except Exception as e:
         # If an error occurs during processing, raise an HTTP 500 error with the error message
-        raise HTTPException(status_code=500, detail=f"Error processing data: {e}")
+        raise HTTPException(status_code=500, detail=f"Error in colab api of LLM : {e}")

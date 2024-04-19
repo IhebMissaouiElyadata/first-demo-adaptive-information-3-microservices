@@ -1,11 +1,10 @@
 """
 We will use a deployed API using Colab now for resource restriction and testing purposes until further discussions.
 
-
 """
+
 import httpx
 from fastapi import FastAPI, HTTPException, APIRouter
-
 from source.schemas.input_data_schema import InputDataSchema
 
 
@@ -20,7 +19,7 @@ async def getLLMAnswer(context:InputDataSchema):
             print(json_output["boxes"])
             # Forward the data to the second microservice
             response = await client.post(
-                    "https://650e-34-147-28-205.ngrok-free.app/post" ,
+                    "https://8196-34-125-167-71.ngrok-free.app/post" ,
                     headers={"Content-Type": "application/json"},
                     json=json_output,timeout=500
                 )
