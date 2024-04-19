@@ -1,9 +1,10 @@
-from pydantic_settings import BaseSettings
+from pydantic import  Field
 import os
+# To this import statement
+from pydantic_settings import BaseSettings
 
-
-class Appconfig(BaseSettings):
-    app_name: str = os.getenv("APP_NAME")
-    debug: bool = False
-    database_url: str = "postgresql://"+os.getenv("DB_USER")+":"+os.getenv("DB_PASSWORD")+"@"+os.getenv("DB_HOST")+"/"+os.getenv("DB_NAME")
+class AppConfig(BaseSettings):
+    app_name: str = Field(default=os.getenv("APP_NAME", "myapp"))
+    debug: bool = Field(default=False)
+    database_url: str = Field(default="sqlite:///app.db")
 

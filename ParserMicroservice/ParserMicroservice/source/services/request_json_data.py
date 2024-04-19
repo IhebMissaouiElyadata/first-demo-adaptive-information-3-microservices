@@ -3,6 +3,7 @@ from source.services.ocr_processor import optichalCharacterRecognitionPaddle
 
 
 async def request_json_data(input_data:InputDataSchema):
+    print("here")
     output_data = {}
     # texts =  optichalCharacterRecognitionTesseract(data)
     # print(texts)

@@ -4,7 +4,6 @@ from fastapi import APIRouter, Request, HTTPException, UploadFile, File, Form
 import httpx
 import json
 from source.services.request_json_data import request_json_data
-
 from starlette.responses import JSONResponse
 
 from source.services.ocr_processor import optichalCharacterRecognitionPaddle
@@ -30,8 +29,9 @@ async def get_info():
 @router.post("/")
 async def parse_received_data_to_sentences_boxes(inputData: InputDataSchema):
     data = await request_json_data(inputData)
+
     async with httpx.AsyncClient() as client:
-        try:
+
 
             # Forward the data to the second microservice
             response = await client.post(
@@ -39,20 +39,8 @@ async def parse_received_data_to_sentences_boxes(inputData: InputDataSchema):
                 headers={"Content-Type": "application/json"},
                 json=data, timeout=100,
             )
-            # Get the status code of the response
-            status_code = response.status_code
             #print("***",status_code)
-            print("***************", response.content)
-
-            response.raise_for_status()
+            if (response.status_code !=200):
+                raise Exception("HTTP Exception from Answer generation microservice ")
             return response.content
-        except httpx.HTTPStatusError as e:
-            # Handle HTTP status errors (4xx or 5xx)
-            raise HTTPException(status_code=e.response.status_code, detail=f"HTTP error occurred: {e}") from e
-        except httpx.TimeoutException as e:
-            # Handle timeout errors
-            raise HTTPException(status_code=504, detail="Request to third microservice timed out") from e
-        except Exception as e:
-            # Handle other exceptions
-            raise HTTPException(status_code=500, detail=f"Error in the third microservice: {e}") from e
 

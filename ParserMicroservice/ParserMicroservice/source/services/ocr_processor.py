@@ -3,6 +3,7 @@ from fastapi import HTTPException
 from source.schemas.input_data_schema import InputDataSchema
 from io import BytesIO
 from paddleocr import draw_ocr
+import paddle
 import paddleocr
 import pytesseract
 import io

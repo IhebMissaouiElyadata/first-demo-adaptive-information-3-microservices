@@ -1,0 +1,13 @@
+prefix=/home/iheb/PycharmProjects/AIE-v1/first-demo-adaptive-information-3-microservices/GatewayMicroService/env
+exec_prefix=/home/iheb/PycharmProjects/AIE-v1/first-demo-adaptive-information-3-microservices/GatewayMicroService/env
+libdir=/home/iheb/PycharmProjects/AIE-v1/first-demo-adaptive-information-3-microservices/GatewayMicroService/env/lib
+sharedlibdir=/home/iheb/PycharmProjects/AIE-v1/first-demo-adaptive-information-3-microservices/GatewayMicroService/env/lib
+includedir=/home/iheb/PycharmProjects/AIE-v1/first-demo-adaptive-information-3-microservices/GatewayMicroService/env/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
