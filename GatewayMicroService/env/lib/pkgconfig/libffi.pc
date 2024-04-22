@@ -1,0 +1,11 @@
+prefix=/home/iheb/PycharmProjects/AIE-v1/first-demo-adaptive-information-3-microservices/GatewayMicroService/env
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+toolexeclibdir=${libdir}
+includedir=/home/iheb/PycharmProjects/AIE-v1/first-demo-adaptive-information-3-microservices/GatewayMicroService/env/include
+
+Name: libffi
+Description: Library supporting Foreign Function Interfaces
+Version: 3.4.4
+Libs: -L${toolexeclibdir} -lffi
+Cflags: -I${includedir}
