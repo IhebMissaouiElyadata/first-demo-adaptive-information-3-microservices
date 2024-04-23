@@ -6,7 +6,3 @@ pydantic_settings
 
 paddlepaddle
 paddleocr>=2.0.1
-PdfReader
-pytesseract
-#pytest
-#psycopg2-binary

@@ -1,13 +1,11 @@
 from fastapi import FastAPI,HTTPException
 from fastapi.responses import JSONResponse
-
+from config.settings import  get_app_config
 from config.settings import AppConfig
 from source.api.router import router as parser_router
 
-app_config = AppConfig()
 app = FastAPI(debug=True)
-
-
+# Dependency provider function to provide the app_config instance
 
 @app.get("/")
 async def get_root():

@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: ./GatewayMicroService/GatewayMicroService
+
+    environment:
+      - PARSER_ENDPOINT=http://parser:5000/api/parser/ocr/v1/
+    ports:
+      - "8000:5000"
+    depends_on:
+      - parser
+
+  parser:
+    build: ./ParserMicroservice/ParserMicroservice
+
+    environment:
+      - ANS_GEN_ENDPOINT=http://answer:5000/api/answerGenerator/LLM/v1
+    ports:
+      - "8001:5000"
+    depends_on:
+      - answer
+
+  answer:
+    build: ./AnswerGeneratorMicroservice
+
+
+    environment:
+      - answer_gen_APP=https://5aa1-34-125-74-41.ngrok-free.app/post
+    ports:
+      - "8002:5000"
+
+
