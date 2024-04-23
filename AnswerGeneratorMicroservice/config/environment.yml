@@ -1,6 +1,0 @@
-name: subproject1
-dependencies:
-  - python=3.8
-  - numpy
-  - pandas
-
